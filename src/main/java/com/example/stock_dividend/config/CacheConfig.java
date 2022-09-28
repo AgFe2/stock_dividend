@@ -26,24 +26,24 @@ public class CacheConfig {
 
     @Bean
     public CacheManager redisCacheManager(RedisConnectionFactory redisConnectionFactory) {
-        RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig()
+        RedisCacheConfiguration conf = RedisCacheConfiguration.defaultCacheConfig()
                 .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer()))
                 .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer()));
 
         return RedisCacheManager.RedisCacheManagerBuilder
                 .fromConnectionFactory(redisConnectionFactory)
-                .cacheDefaults(config)
+                .cacheDefaults(conf)
                 .build();
     }
 
     @Bean
     public RedisConnectionFactory redisConnectionFactory() {
 //        RedisClusterConfiguration config = new RedisClusterConfiguration();
-        RedisStandaloneConfiguration config = new RedisStandaloneConfiguration();
-        config.setHostName(this.host);
-        config.setPort(this.port);
+        RedisStandaloneConfiguration conf = new RedisStandaloneConfiguration();
+        conf.setHostName(this.host);
+        conf.setPort(this.port);
 //        config.setPassword();
 
-        return new LettuceConnectionFactory(config);
+        return new LettuceConnectionFactory(conf);
     }
 }
