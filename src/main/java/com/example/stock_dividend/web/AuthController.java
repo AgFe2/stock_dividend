@@ -22,7 +22,7 @@ public class AuthController {
 
     private final TokenProvider tokenProvider;
 
-    @PostMapping("/singup")
+    @PostMapping("/signup")
     public ResponseEntity<?> signup(@RequestBody Auth.SignUp request) {
         // 회원가입을 위한 API
         MemberEntity result = this.memberService.register(request);
@@ -30,7 +30,7 @@ public class AuthController {
         return ResponseEntity.ok(result);
     }
 
-    @PostMapping("/singin")
+    @PostMapping("/signin")
     public ResponseEntity<?> signup(@RequestBody Auth.SignIn request) {
         // 로그인을 위한 API
         MemberEntity member = this.memberService.authenticate(request);
