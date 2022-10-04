@@ -26,6 +26,8 @@ public class MemberEntity implements UserDetails {
 
     private String password;
 
+    // List 를 entity 에 넣기 위해서는 @OneToMany 혹은 @ElementCollection 을 사용해야함
+    // @ElementCollection 은 기본 fetch 전략이 Lazy 임으로 오류가 발생함
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles;
 
