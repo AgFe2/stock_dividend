@@ -34,8 +34,8 @@ public class AuthController {
     public ResponseEntity<?> signup(@RequestBody Auth.SignIn request) {
         // 로그인을 위한 API
         MemberEntity member = this.memberService.authenticate(request);
-        System.out.println(member.toString());
         String token = this.tokenProvider.generateToken(member.getUsername(), member.getRoles());
+        log.info("user login -> " + request.getUsername());
         return ResponseEntity.ok(token);
     }
 }

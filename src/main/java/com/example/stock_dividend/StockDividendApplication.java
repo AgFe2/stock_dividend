@@ -13,7 +13,7 @@ public class StockDividendApplication {
     public static void main(String[] args) {
         SpringApplication.run(StockDividendApplication.class, args);
 
-        System.out.println("Main -> " + Thread.currentThread().getName());
+//        System.out.println("Main -> " + Thread.currentThread().getName());
     }
 
 }
